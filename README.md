@@ -218,4 +218,4 @@ Project Link: [https://github.com/Si-cyber-ai/PersonalTracker_LifeOS](https://gi
 
 ---
 
-**Built with ❤️ using React, TypeScript, and Supabase**
+**Built with ❤️ using React, TypeScript, and Supabase by Sidharth**
