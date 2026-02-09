@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Target, Rocket, Lightbulb, CalendarDays, IndianRupee, CreditCard, Maximize, Menu, X } from 'lucide-react';
+import { Home, Target, Rocket, Lightbulb, CalendarDays, IndianRupee, CreditCard, Maximize, Menu, X, User, LogOut, LogIn } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import LifeOSLogo from '@/components/logo/LifeOSLogo';
 import NavWindEffect from '@/components/layout/NavWindEffect';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
   { path: '/', label: 'Dashboard', icon: Home },
@@ -19,6 +21,7 @@ const Navigation = () => {
   const location = useLocation();
   const [time, setTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -60,6 +63,25 @@ const Navigation = () => {
           <span className="text-sm text-muted-foreground font-mono hidden sm:block">
             {format(time, 'h:mm:ss a')}
           </span>
+          
+          {user ? (
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/20">
+              <User className="w-4 h-4 text-primary" />
+              <span className="text-xs text-foreground truncate max-w-[120px]">{user.email}</span>
+              <button onClick={() => signOut()} className="p-1 hover:bg-white/30 rounded transition-colors" title="Sign out">
+                <LogOut className="w-3.5 h-3.5 text-muted-foreground" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 transition-colors"
+            >
+              <LogIn className="w-4 h-4 text-primary" />
+              <span className="text-xs text-foreground">Sign In</span>
+            </Link>
+          )}
+          
           <Link
             to="/focus"
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200"

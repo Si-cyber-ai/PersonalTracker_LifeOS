@@ -49,4 +49,30 @@ coverage/
 # OS
 Thumbs.db
 .DS_Store
+
+# Vercel
 .vercel
+
+# Supabase local
+.supabase/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# IDE
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.vscode/launch.json
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Desktop.ini
+ehthumbs.db
+ehthumbs_vista.db

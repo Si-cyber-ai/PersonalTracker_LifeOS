@@ -3,10 +3,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { LifeOSProvider } from "@/contexts/LifeOSContext";
 import DynamicBackground from "@/components/background/DynamicBackground";
 import Navigation from "@/components/layout/Navigation";
 import Index from "./pages/Index";
+import AuthPage from "./pages/AuthPage";
 import GoalsPage from "./pages/GoalsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
@@ -29,6 +31,7 @@ const AppContent = () => {
       <main className={isFocus ? '' : 'relative z-10 pt-20 pb-8 px-4 md:px-8'}>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<AuthPage />} />
           <Route path="/goals" element={<GoalsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/skills" element={<SkillsPage />} />
@@ -45,15 +48,17 @@ const AppContent = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LifeOSProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </TooltipProvider>
-    </LifeOSProvider>
+    <AuthProvider>
+      <LifeOSProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+        </TooltipProvider>
+      </LifeOSProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
