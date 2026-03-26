@@ -215,6 +215,13 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 Si-cyber-ai - [@Si-cyber-ai](https://github.com/Si-cyber-ai)
 
 Project Link: [https://github.com/Si-cyber-ai/PersonalTracker_LifeOS](https://github.com/Si-cyber-ai/PersonalTracker_LifeOS)
+---
+
+## 📧 Contact
+
+For questions or collaboration:
+- Open an issue on GitHub
+- Email: sidharthpnair20@example.com
 
 ---
 
